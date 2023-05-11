@@ -1,7 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Box from "../utils/chakra-components/ChakraBox";
+import { Box } from "../utils/chakra-components/ChakraComponents";
+import HeroSection from "../components/HeroSection";
 
-export default function Home() {
-  return <Box></Box>;
+export default async function Home() {
+  return (
+    <Box>
+      <HeroSection />
+    </Box>
+  );
 }
