@@ -6,7 +6,7 @@ type Props = {
   text: string;
 };
 
-const HeadphonesHeader = (props: Props) => {
+const RestHeader = (props: Props) => {
   return (
     <HeroSection>
       <VStack>
@@ -23,4 +23,4 @@ const HeadphonesHeader = (props: Props) => {
   );
 };
 
-export default HeadphonesHeader;
+export default RestHeader;

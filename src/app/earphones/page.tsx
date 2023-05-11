@@ -6,7 +6,8 @@ type Props = {};
 const page = (props: Props) => {
   return (
     <>
-      <RestHeader text="earphones" />
+      <RestHeader text={"earphones"} />
+      <div>earphones</div>
     </>
   );
 };
