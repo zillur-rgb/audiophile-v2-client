@@ -22,13 +22,13 @@ const Navbar = (props: Props) => {
         <Link href={"/"}>
           <Text>Home</Text>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/headphones"}>
           <Text>Headphones</Text>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/earphones"}>
           <Text>Earphones</Text>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/speakers"}>
           <Text>Speakers</Text>
         </Link>
       </HStack>
