@@ -3,7 +3,7 @@ import { Button } from "../../utils/chakra-components/ChakraComponents";
 
 type Props = {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Btn = (props: Props) => {
