@@ -1,5 +1,5 @@
 import RestHeader from "@/components/hero-section/RestHeader";
-import Registration from "@/components/registration/Registration";
+import Registration from "@/components/auth/registration/Registration";
 import React from "react";
 
 type Props = {};

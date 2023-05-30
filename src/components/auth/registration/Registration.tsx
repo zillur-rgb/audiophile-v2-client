@@ -1,5 +1,6 @@
 "use client";
 
+import { addData } from "@/services/apiHelpers";
 import { Button, HStack, VStack } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -30,9 +31,7 @@ export default function Registration(props: Props) {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: (userInfo: IUserInput) => {
-      return axios.post("http://localhost:8080/api/users", userInfo);
-    },
+    mutationFn: (userInfo: IUserInput) => addData("users", userInfo),
   });
 
   const onSubmit = (e: React.SyntheticEvent) => {
