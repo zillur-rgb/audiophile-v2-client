@@ -28,6 +28,16 @@ const navItems = [
     title: "Speakers",
     href: "/speakers",
   },
+  {
+    id: 4,
+    title: "Login",
+    href: "/auth/login",
+  },
+  {
+    id: 5,
+    title: "Registration",
+    href: "/auth/registration",
+  },
 ];
 
 const Navbar = (props: Props) => {
