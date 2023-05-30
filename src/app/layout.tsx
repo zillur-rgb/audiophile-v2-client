@@ -7,6 +7,7 @@ import HeroSection from "../components/HeroSection";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { UserProviders } from "@/providers/UserProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryClientProvider client={queryClient}>
-          <Providers>{children}</Providers>
-        </QueryClientProvider>
+        <UserProviders>
+          <QueryClientProvider client={queryClient}>
+            <Providers>{children}</Providers>
+          </QueryClientProvider>
+        </UserProviders>
       </body>
     </html>
   );

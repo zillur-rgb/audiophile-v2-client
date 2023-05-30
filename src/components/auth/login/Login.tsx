@@ -1,10 +1,11 @@
 "use client";
 
+import { ProviderType, providerContext } from "@/providers/UserProviders";
 import { addData } from "@/services/apiHelpers";
-import { Button, VStack } from "@chakra-ui/react";
+import { Button, VStack, Text } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 type Props = {};
 interface IUserInput {
@@ -16,6 +17,9 @@ export default function Login(props: Props) {
     email: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const { setUserToken, userToken } = useContext<ProviderType>(providerContext);
 
   const router = useRouter();
 
@@ -31,14 +35,25 @@ export default function Login(props: Props) {
     mutation.isError && <h1>Error sending data</h1>;
   }
 
-  {
-    mutation.isSuccess && router.push("/");
-  }
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      router.push("/");
+    }
+  }, [mutation.isSuccess, router, userToken]);
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const { data } = await mutation.mutateAsync(loginData);
-    console.log("User", data);
+    try {
+      const { data } = await mutation.mutateAsync(loginData);
+      setUserToken(data.token);
+      console.log("data token", userToken);
+    } catch (exception) {
+      setErrorMessage("Wrong credentials!");
+    }
   };
+
+  useEffect(() => {
+    console.log("userToken", userToken);
+  }, [userToken]);
   return (
     <VStack width={"100%"} h="100vh" bg={"#00000010"}>
       <form onSubmit={onSubmit}>
@@ -73,6 +88,12 @@ export default function Login(props: Props) {
           <Button type="submit" bg={"orange"}>
             Submit
           </Button>
+
+          {errorMessage && (
+            <Text color={"red.400"} fontWeight={"bold"}>
+              {errorMessage}
+            </Text>
+          )}
         </VStack>
       </form>
     </VStack>

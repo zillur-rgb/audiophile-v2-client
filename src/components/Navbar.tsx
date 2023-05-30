@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { Box, HStack, Text } from "../utils/chakra-components/ChakraComponents";
 import Link from "next/link";
 import { FiShoppingCart } from "react-icons/fi";
 import { usePathname, useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import providerContext, { ProviderType } from "@/providers/UserProviders";
 
 type Props = {};
 const navItems = [
@@ -41,6 +42,7 @@ const navItems = [
 ];
 
 const Navbar = (props: Props) => {
+  const { userToken, setUserToken } = useContext<ProviderType>(providerContext);
   const pathname = usePathname();
   const routeMatchPath = (route: string) => {
     if (pathname === route) {
@@ -62,16 +64,41 @@ const Navbar = (props: Props) => {
         </Text>
       </Link>
       <HStack spacing={16}>
-        {navItems.map((nav) => (
-          <Link key={nav.id} href={nav.href}>
-            <Text
-              fontWeight={routeMatchPath(nav.href) ? 700 : "auto"}
-              color={routeMatchPath(nav.href) ? "orange" : "white"}
-            >
-              {nav.title}
-            </Text>
+        {navItems.map((nav) => {
+          if (userToken) {
+            if (nav.id !== 4 && nav.id !== 5) {
+              return (
+                <Link key={nav.id} href={nav.href}>
+                  <Text
+                    fontWeight={routeMatchPath(nav.href) ? 700 : "auto"}
+                    color={routeMatchPath(nav.href) ? "orange" : "white"}
+                  >
+                    {nav.title}
+                  </Text>
+                </Link>
+              );
+            }
+          } else {
+            if (nav.id !== 1) {
+              return (
+                <Link key={nav.id} href={nav.href}>
+                  <Text
+                    fontWeight={routeMatchPath(nav.href) ? 700 : "auto"}
+                    color={routeMatchPath(nav.href) ? "orange" : "white"}
+                  >
+                    {nav.title}
+                  </Text>
+                </Link>
+              );
+            }
+          }
+        })}
+
+        {userToken && (
+          <Link href={"/"} onClick={() => setUserToken("")}>
+            <Text color={"white"}>Logout</Text>
           </Link>
-        ))}
+        )}
       </HStack>
       <FiShoppingCart color="white" fontSize={"24px"} />
     </HStack>
