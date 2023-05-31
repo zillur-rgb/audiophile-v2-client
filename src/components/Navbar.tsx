@@ -80,7 +80,7 @@ const Navbar = (props: Props) => {
               );
             }
           } else {
-            if (nav.id !== 1) {
+            if (nav.id !== 100) {
               return (
                 <Link key={nav.id} href={nav.href}>
                   <Text

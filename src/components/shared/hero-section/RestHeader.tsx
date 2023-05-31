@@ -18,6 +18,7 @@ const RestHeader = (props: Props) => {
           fontWeight={700}
           fontSize={"xl"}
           py={20}
+          color={"white"}
         >
           {props.text}
         </Text>

@@ -6,5 +6,6 @@ import {
   VStack,
   Button,
   SimpleGrid,
+  Spinner,
 } from "@chakra-ui/react";
-export { Box, HStack, Text, VStack, Button, SimpleGrid };
+export { Box, HStack, Text, VStack, Button, SimpleGrid, Spinner };

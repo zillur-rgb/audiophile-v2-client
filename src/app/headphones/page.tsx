@@ -1,5 +1,6 @@
+"use client";
+import HeadphonesComponent from "@/components/products/HeadphonesComponent";
 import RestHeader from "@/components/shared/hero-section/RestHeader";
-import HeadphonesHeader from "@/components/shared/hero-section/RestHeader";
 import React from "react";
 
 type Props = {};
@@ -9,6 +10,7 @@ const page = (props: Props) => {
     <>
       <RestHeader text={"headphones"} />
       <div>earphones</div>
+      <HeadphonesComponent />
     </>
   );
 };
