@@ -6,9 +6,10 @@ import { FiShoppingCart } from "react-icons/fi";
 import { usePathname, useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import providerContext, { ProviderType } from "@/providers/UserProviders";
+import { routeMatchPath } from "@/services/helperFunctions";
 
 type Props = {};
-const navItems = [
+export const navItems = [
   {
     id: 0,
     title: "Home",
@@ -42,13 +43,9 @@ const navItems = [
 ];
 
 const Navbar = (props: Props) => {
-  const { userToken, setUserToken } = useContext<ProviderType>(providerContext);
   const pathname = usePathname();
-  const routeMatchPath = (route: string) => {
-    if (pathname === route) {
-      return true;
-    }
-  };
+  const { userToken, setUserToken } = useContext<ProviderType>(providerContext);
+
   return (
     <HStack
       justify={"space-between"}
@@ -70,8 +67,12 @@ const Navbar = (props: Props) => {
               return (
                 <Link key={nav.id} href={nav.href}>
                   <Text
-                    fontWeight={routeMatchPath(nav.href) ? 700 : "auto"}
-                    color={routeMatchPath(nav.href) ? "orange" : "white"}
+                    fontWeight={
+                      routeMatchPath(nav.href, pathname) ? 700 : "auto"
+                    }
+                    color={
+                      routeMatchPath(nav.href, pathname) ? "orange" : "white"
+                    }
                   >
                     {nav.title}
                   </Text>
@@ -83,8 +84,12 @@ const Navbar = (props: Props) => {
               return (
                 <Link key={nav.id} href={nav.href}>
                   <Text
-                    fontWeight={routeMatchPath(nav.href) ? 700 : "auto"}
-                    color={routeMatchPath(nav.href) ? "orange" : "white"}
+                    fontWeight={
+                      routeMatchPath(nav.href, pathname) ? 700 : "auto"
+                    }
+                    color={
+                      routeMatchPath(nav.href, pathname) ? "orange" : "white"
+                    }
                   >
                     {nav.title}
                   </Text>

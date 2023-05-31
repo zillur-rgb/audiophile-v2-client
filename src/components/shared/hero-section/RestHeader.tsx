@@ -1,6 +1,9 @@
 import React from "react";
-import HeroSection from "../HeroSection";
-import { Text, VStack } from "../../utils/chakra-components/ChakraComponents";
+import HeroSection from "../../HeroSection";
+import {
+  Text,
+  VStack,
+} from "../../../utils/chakra-components/ChakraComponents";
 
 type Props = {
   text: string;

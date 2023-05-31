@@ -8,6 +8,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProviders } from "@/providers/UserProviders";
+import Footer from "@/components/shared/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <UserProviders>
           <QueryClientProvider client={queryClient}>
-            <Providers>{children}</Providers>
+            <Providers>
+              {children}
+              <Footer />
+            </Providers>
           </QueryClientProvider>
         </UserProviders>
       </body>

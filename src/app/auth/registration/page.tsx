@@ -1,4 +1,4 @@
-import RestHeader from "@/components/hero-section/RestHeader";
+import RestHeader from "@/components/shared/hero-section/RestHeader";
 import Registration from "@/components/auth/registration/Registration";
 import React from "react";
 

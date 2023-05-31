@@ -1,4 +1,4 @@
-import RestHeader from "@/components/hero-section/RestHeader";
+import RestHeader from "@/components/shared/hero-section/RestHeader";
 import React from "react";
 
 type Props = {};

@@ -6,9 +6,9 @@ import {
   Text,
   Box,
   HStack,
-} from "../../utils/chakra-components/ChakraComponents";
-import Btn from "../Button/Btn";
-import HeroSection from "../HeroSection";
+} from "../../../utils/chakra-components/ChakraComponents";
+import Btn from "../../Button/Btn";
+import HeroSection from "../../HeroSection";
 
 type Props = {};
 
