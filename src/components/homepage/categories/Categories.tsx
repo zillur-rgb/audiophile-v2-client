@@ -5,7 +5,7 @@ import {
   SimpleGrid,
   Text,
   VStack,
-} from "../../utils/chakra-components/ChakraComponents";
+} from "../../../utils/chakra-components/ChakraComponents";
 import Image from "next/image";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Link from "next/link";
