@@ -6,6 +6,7 @@ type Props = {
   color?: string;
   fontSize?: string;
   letterSpacing?: number;
+  lineHeight?: string;
 };
 
 const ProductTitle = (props: Props) => {
@@ -14,7 +15,7 @@ const ProductTitle = (props: Props) => {
       letterSpacing={props.letterSpacing || 12}
       textTransform={"uppercase"}
       fontSize={props.fontSize || 60}
-      lineHeight={"70px"}
+      lineHeight={props.lineHeight || "70px"}
       fontWeight={"700"}
       color={props.color || "#fff"}
     >

@@ -9,6 +9,7 @@ import {
 } from "../../../utils/chakra-components/ChakraComponents";
 import Btn from "../../Button/Btn";
 import HeroSection from "../../HeroSection";
+import ProductTitle from "../ProductTitle";
 
 type Props = {};
 
@@ -21,9 +22,12 @@ const HomeHeader = (props: Props) => {
           <Text letterSpacing={3} textTransform={"uppercase"} color="lightText">
             New Product
           </Text>
-          <Text fontSize={"xxl"} fontWeight={700} lineHeight={"64px"}>
-            XX99 MARK II HEADPHONES
-          </Text>
+          <ProductTitle
+            lineHeight="60px"
+            letterSpacing={8}
+            fontSize="48px"
+            label="XX99 MARK II HEADPHONES"
+          />
           <Text color="lightText">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.

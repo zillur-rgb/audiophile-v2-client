@@ -71,6 +71,7 @@ const Featured = (props: Props) => {
             border={"4px solid black"}
             px={20}
             py={8}
+            textTransform={"uppercase"}
             _hover={{
               bg: "black",
               color: "white",

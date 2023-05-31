@@ -100,9 +100,14 @@ const Navbar = (props: Props) => {
         })}
 
         {userToken && (
-          <Link href={"/"} onClick={() => setUserToken("")}>
-            <Text color={"white"}>Logout</Text>
-          </Link>
+          <>
+            <Link href={"/"} onClick={() => setUserToken("")}>
+              <Text color={"white"}>Logout</Text>
+            </Link>
+            <Link href={"/"}>
+              <Text color={"white"}>Dashboard</Text>
+            </Link>
+          </>
         )}
       </HStack>
       <FiShoppingCart color="white" fontSize={"24px"} />
