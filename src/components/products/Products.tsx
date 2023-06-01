@@ -9,13 +9,14 @@ import {
 import Image from "next/image";
 import ProductTitle from "../shared/ProductTitle";
 import Btn from "../Button/Btn";
+import { useRouter } from "next/navigation";
 
 type Props = {
   data: any[];
 };
 
 const Products = ({ data }: Props) => {
-  console.log("Dta", data);
+  const router = useRouter();
 
   return (
     <VStack pb={40} px={28}>
@@ -45,7 +46,10 @@ const Products = ({ data }: Props) => {
                 lineHeight="45px"
               />
               <Text>{dta.description}</Text>
-              <Btn label="SEE PRODUCT" />
+              <Btn
+                onClick={() => router.push(`/${dta.category}/${dta.slug}`)}
+                label="SEE PRODUCT"
+              />
             </VStack>
           </HStack>
         );

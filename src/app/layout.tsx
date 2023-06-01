@@ -30,6 +30,7 @@ export default function RootLayout({
         <UserProviders>
           <QueryClientProvider client={queryClient}>
             <Providers>
+              <Navbar />
               {children}
               <Footer />
             </Providers>

@@ -18,7 +18,7 @@ const Btn = (props: Props) => {
       py={6}
       _hover={{
         color: "orange",
-        background: "white",
+        background: "#f1f1f1",
       }}
     >
       {props.label}

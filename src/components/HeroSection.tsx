@@ -1,10 +1,6 @@
 "use client";
-import Image from "next/image";
 import React from "react";
-import { Box, VStack } from "../utils/chakra-components/ChakraComponents";
-import Text from "../utils/chakra-components/ChakraText";
-import Navbar from "./Navbar";
-import Btn from "./Button/Btn";
+import { Box } from "../utils/chakra-components/ChakraComponents";
 
 type Props = {
   children: React.ReactNode;
@@ -16,7 +12,7 @@ export default function HeroSection(props: Props) {
   };
   return (
     <Box bg={"#191919"} px={28}>
-      <Navbar />
+      {/* <Navbar /> */}
       {props.children}
     </Box>
   );

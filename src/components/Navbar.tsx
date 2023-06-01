@@ -50,10 +50,12 @@ const Navbar = (props: Props) => {
     <HStack
       justify={"space-between"}
       py={4}
+      px={28}
       borderBottom={".5px solid rgba(255, 255, 255, .3)"}
+      bg={"#191919"}
     >
       <Link href={"/"}>
-        <Text fontSize={"xl"} fontWeight={700}>
+        <Text fontSize={"xl"} color={"#fff"} fontWeight={700}>
           <Box as="span" color={"orange"}>
             Audio
           </Box>
