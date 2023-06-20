@@ -10,16 +10,15 @@ type Props = {};
 const HeadphonesComponent = (props: Props) => {
   const { setProducts, products } = useContext<ProviderType>(providerContext);
   const { isLoading, error, data, isFetching } = useQuery({
-    queryKey: ["repoData"],
+    queryKey: ["Headphones Data"],
     queryFn: () =>
-      axios.get("products.json").then((res) => {
+      axios.get("http://localhost:5000/api/products").then((res) => {
         const data = res.data;
-        console.log("dta", data.products);
+        setProducts(res.data);
 
-        const filteredData = data.products.filter(
-          (item: any) => item.category === "headphones"
+        const filteredData = data.data.filter(
+          (item: any) => item.category === "headphone"
         );
-        console.log("dta", filteredData);
         return filteredData;
       }),
   });

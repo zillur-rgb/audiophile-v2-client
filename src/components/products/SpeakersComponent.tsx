@@ -12,11 +12,11 @@ const SpeakersComponent = (props: Props) => {
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      axios.get("products.json").then((res) => {
+      axios.get("http://localhost:5000/api/products").then((res) => {
         const data = res.data;
 
-        const filteredData = data.products.filter(
-          (item: any) => item.category === "speakers"
+        const filteredData = data.data.filter(
+          (item: any) => item.category === "speaker"
         );
         return filteredData;
       }),

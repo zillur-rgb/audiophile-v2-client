@@ -20,6 +20,7 @@ import SectionTitle from "../shared/SectionTitle";
 import Categories from "../homepage/categories/Categories";
 import Featured from "../homepage/feature-products/Featured";
 import Model from "../homepage/model/Model";
+import { IProduct } from "@/types/products.type";
 
 type Props = {
   params: {
@@ -34,12 +35,11 @@ const ProductDetails = ({ params }: Props) => {
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["singleData"],
     queryFn: () =>
-      axios.get("/products.json").then((res) => {
-        const singleData = res.data.products.filter(
-          (dta: any) => dta.slug === params.slug
-        );
-        return singleData[0];
-      }),
+      axios
+        .get(`http://localhost:5000/api/products/${params.slug}`)
+        .then((res) => {
+          return res.data.data as IProduct;
+        }),
   });
 
   if (isLoading) {
@@ -57,23 +57,23 @@ const ProductDetails = ({ params }: Props) => {
       <VStack px={56} py={28}>
         <HStack spacing={40}>
           <Image
-            src={data.image.desktop}
-            width={418}
-            height={418}
-            alt={data.image.desktop}
+            src={data?.image[0] as string}
+            width={512}
+            height={512}
+            alt={"image"}
           />
           <VStack spacing={8} align={"flex-start"}>
             <ProductTitle
               color="black"
               fontSize="30px"
               letterSpacing={1.05}
-              label={data.name}
+              label={data?.name as string}
             />
             <Text color={"#00000080"} lineHeight={"30px"}>
-              {data.description}
+              {data?.description}
             </Text>
             <Text color={"#000000"} fontSize={20} fontWeight={500}>
-              €{data.price}
+              €{data?.price}
             </Text>
 
             <HStack>
@@ -111,66 +111,48 @@ const ProductDetails = ({ params }: Props) => {
         </HStack>
 
         {/* Features */}
-        <HStack spacing={28} pt={20} align={"flex-start"}>
-          <VStack maxW={"50%"} align={"flex-start"} spacing={12}>
+        <HStack spacing={28} pt={20} alignItems={"flex-start"}>
+          <VStack maxW={"50%"} spacing={12} align={"flex-start"}>
             <SectionTitle label="features" />
-            <Text color={"#00000080"} lineHeight={"30px"}>
-              {data.features}
-            </Text>
-          </VStack>
-          <VStack align={"flex-start"} spacing={12}>
-            <SectionTitle label="in the box" />
-            <VStack align={"flex-start"}>
-              {data.includedItems.map(
-                ({ quantity, item }: { quantity: number; item: string }) => {
-                  return (
-                    <Text>
-                      <Text
-                        as={"span"}
-                        pr={4}
-                        color={"orange"}
-                        fontWeight={700}
-                      >
-                        {quantity}x
-                      </Text>{" "}
-                      {item}
-                    </Text>
-                  );
-                }
-              )}
+            <VStack>
+              {data?.features.map((feat) => (
+                <Text color={"#00000080"} lineHeight={"30px"} key={feat}>
+                  - {feat}
+                </Text>
+              ))}
             </VStack>
+          </VStack>
+          <VStack spacing={12} align={"flex-start"}>
+            <SectionTitle label="description" />
+            <Text color={"#00000080"} lineHeight={"30px"}>
+              {data?.description}
+            </Text>
           </VStack>
         </HStack>
 
         {/* Gallery */}
         <Grid
           w={"100%"}
-          h="592px"
+          h="700px"
           templateRows="repeat(2, 1fr)"
-          templateColumns="repeat(3, 1fr)"
+          templateColumns="repeat(2, 1fr)"
           gap={4}
           pt={20}
         >
           <GridItem
-            rowSpan={2}
-            colSpan={2}
             bg="tomato"
-            bgImage={data.gallery.third.desktop}
+            bgImage={data?.image[0]}
             bgRepeat={"no-repeat"}
             bgPos={"center"}
             bgSize={"cover"}
             borderRadius={"xl"}
           />
-          <GridItem
-            colSpan={1}
-            borderRadius={"xl"}
-            bgImage={data.gallery.first.desktop}
-          />
-          <GridItem
+          <GridItem borderRadius={"xl"} bgImage={data?.image[1]} />
+          {/* <GridItem
             colSpan={1}
             borderRadius={"xl"}
             bgImage={data.gallery.third.desktop}
-          />
+          /> */}
         </Grid>
         {/* <Model /> */}
       </VStack>
