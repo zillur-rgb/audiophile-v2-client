@@ -44,8 +44,12 @@ export default function Login(props: Props) {
     e.preventDefault();
     try {
       const { data } = await mutation.mutateAsync(loginData);
-      setUserToken(data.token);
-      console.log("data token", userToken);
+      if (data) {
+        setUserToken(data.token);
+        if (!localStorage.getItem("userToken")) {
+          localStorage.setItem("userToken", data.token);
+        }
+      }
     } catch (exception) {
       setErrorMessage("Wrong credentials!");
     }

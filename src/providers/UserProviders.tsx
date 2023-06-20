@@ -1,12 +1,13 @@
+import { IProduct } from "@/types/products.type";
 import React, { createContext, useState } from "react";
 
 export type ProviderType = {
-  userToken: string;
-  setUserToken: (e: string) => void;
+  userToken: string | null;
+  setUserToken: React.Dispatch<React.SetStateAction<string>>;
 
   // Here we will save all the data that are coming from JSON file
-  products: any[];
-  setProducts: (products: any[]) => void;
+  products: IProduct[];
+  setProducts: (products: IProduct[]) => void;
 };
 
 export const providerContext = createContext<ProviderType>({
@@ -28,7 +29,7 @@ export function UserProviders({ children }: { children: React.ReactNode }) {
 
 function useUserProvider() {
   const [userToken, setUserToken] = useState("");
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   return {
     userToken,

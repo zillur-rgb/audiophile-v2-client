@@ -9,6 +9,8 @@ import Navbar from "@/components/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProviders } from "@/providers/UserProviders";
 import Footer from "@/components/shared/footer/Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,9 +32,11 @@ export default function RootLayout({
         <UserProviders>
           <QueryClientProvider client={queryClient}>
             <Providers>
-              <Navbar />
-              {children}
-              <Footer />
+              <Suspense fallback={<Loading />}>
+                <Navbar />
+                {children}
+                <Footer />
+              </Suspense>
             </Providers>
           </QueryClientProvider>
         </UserProviders>

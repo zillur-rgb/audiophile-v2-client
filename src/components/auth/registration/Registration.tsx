@@ -31,7 +31,8 @@ export default function Registration(props: Props) {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: (userInfo: IUserInput) => addData("users", userInfo),
+    mutationFn: (userInfo: IUserInput) =>
+      addData("users/create-user", userInfo),
   });
 
   const onSubmit = (e: React.SyntheticEvent) => {

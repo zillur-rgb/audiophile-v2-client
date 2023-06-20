@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // This is the base url of the server
-const baseUrl = "http://localhost:8080/api";
+const baseUrl = "http://localhost:5000/api";
 
 // To get all the data of a collection
 export const getAllData = (urlPrefix: string = "") =>

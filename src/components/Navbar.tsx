@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Box, HStack, Text } from "../utils/chakra-components/ChakraComponents";
 import Link from "next/link";
 import { FiShoppingCart } from "react-icons/fi";
@@ -46,6 +46,11 @@ const Navbar = (props: Props) => {
   const pathname = usePathname();
   const { userToken, setUserToken } = useContext<ProviderType>(providerContext);
 
+  useEffect(() => {
+    if (localStorage.getItem("userToken")) {
+      setUserToken(localStorage.getItem("userToken") as string);
+    }
+  }, [setUserToken]);
   return (
     <HStack
       justify={"space-between"}
